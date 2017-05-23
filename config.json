@@ -1,0 +1,6 @@
+{
+    "dwi": "/N/u/hayashis/Karst/testdata/sca-service-dtiinit/dwi_data_b1000.nii.gz",
+    "bvecs": "/N/u/hayashis/Karst/testdata/sca-service-dtiinit/dwi_data_b1000.bvecs",
+    "bvals": "/N/u/hayashis/Karst/testdata/sca-service-dtiinit/dwi_data_b1000.bvals",
+    "shells": [0, 1000, 2000, 3000]
+}

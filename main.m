@@ -1,6 +1,16 @@
 function [] = main()
 % normalizes the bvals and splits the bvecs
 
+
+if isempty(getenv('SCA_SERVICE_DIR'))
+    disp('setting SCA_SERVICE_DIR to pwd')
+    setenv('SCA_SERVICE_DIR', pwd)
+end
+
+disp('loading paths')
+addpath(genpath('/N/u/hayashis/BigRed2/git/jsonlab'))
+
+
 % load config.json
 config = loadjson('config.json');
 

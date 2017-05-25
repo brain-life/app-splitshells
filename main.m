@@ -16,9 +16,7 @@ config = loadjson('config.json');
 
 
 % Parameters used for normalization
-params.shells       = config.shells;
-
-params.shells = [0, 1000, 2500, 3000];
+params.shells       = config.shell;
 bvals = dlmread(config.bvals);
 bvecs = dlmread(config.bvecs);
 dwi = niftiRead(config.dwi);
@@ -30,10 +28,10 @@ for i = 1:length(params.shells)
     assertEqual(sum(all_index), sum(index0) + sum(index));
     
     %write files
-    dlmwrite(sprintf('dwi_data_b%i.bvals', params.shells(i)), bvals(all_index));
-    dlmwrite(sprintf('dwi_data_b%i.bvecs', params.shells(i)), bvecs(:,all_index));
-    dwi_oneshell.fname = sprintf('dwi_data_b%i.nii.gz', params.shells(i));
+    dlmwrite(sprintf('dwi.bvals', params.shells(i)), bvals(all_index));
+    dlmwrite(sprintf('dwi.bvecs', params.shells(i)), bvecs(:,all_index));
     dwi_oneshell = dwi;
+    dwi_oneshell.fname = sprintf('dwi.nii.gz', params.shells(i));
     dwi_oneshell.data = dwi.data(:,:,:,all_index);
     dwi_oneshell.dim(4) = size(dwi_oneshell.data,4);
     niftiWrite(dwi_oneshell);

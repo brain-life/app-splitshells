@@ -8,8 +8,8 @@ if isempty(getenv('SCA_SERVICE_DIR'))
 end
 
 disp('loading paths')
-addpath(genpath('/N/u/hayashis/BigRed2/git/jsonlab'))
-
+addpath(genpath('/N/u/hayashis/BigRed2/git/jsonlab'));
+addpath(genpath('/N/u/hayashis/BigRed2/git/vistasoft'));
 
 % load config.json
 config = loadjson('config.json');

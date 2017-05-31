@@ -7,6 +7,21 @@ if [ -z $SCA_SERVICE_DIR ]; then export SCA_SERVICE_DIR=`pwd`; fi
 
 #clean up previous job (just in case)
 rm -f finished
-jobid=`qsub $SCA_SERVICE_DIR/submit.pbs`
-echo $jobid > jobid
+module load matlab
 
+echo "starting main"
+
+(
+export MATLABPATH=$MATLABPATH:$SCA_SERVICE_DIR
+nohup time matlab -nodisplay -nosplash -r main > stdout.log 2> stderr.log
+
+#check for output files
+if [ -s dwi.nii.gz ];
+then
+	echo 0 > finished
+else
+	echo "output missing"
+	echo 1 > finished
+	exit 1
+fi
+) &

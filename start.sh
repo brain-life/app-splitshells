@@ -14,8 +14,7 @@ echo "starting main"
 
 (
     export MATLABPATH=$MATLABPATH:$SERVICE_DIR
-    nohup time matlab -nodisplay -nosplash -r main > stdout.log 2> stderr.log
-    echo $! > pid
+    nohup time matlab -nodisplay -nosplash -r main > stdout.log 2> stderr.log 
 
     #check for output files
     if [ -s dwi.nii.gz ];
@@ -26,4 +25,4 @@ echo "starting main"
 	echo 1 > finished
 	exit 1
     fi
-) &
+)&

@@ -5,6 +5,8 @@
 #    exit 1
 #fi
 
-jobid=`cat jobid`
-echo "running qdel $jobid"
-qdel $jobid
+if [ -s pid ]; then
+    pid=`cat pid`
+
+    kill $pid
+fi

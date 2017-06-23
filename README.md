@@ -6,7 +6,7 @@ You can run this app anywhere that has docker engine installed.
 
 If you are not going to use the one that we've published on docker hub, you can build the container locally by git cloning this repo, and then run following command
 
-`docker build -t app-splitshell .`
+`docker build -t app-splitshells .`
 
 ## Create config.json
 
@@ -35,7 +35,7 @@ Now, run docker run to run the app
 docker run -it --rm \
     -v `pwd`/testdata:/input \
     -v `pwd`:/output \
-    brainlife/splitshells
+    app-splitshells
 
 ```
 

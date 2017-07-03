@@ -22,6 +22,11 @@ if [ -f finished ]; then
     fi
 fi
 
-#assumed to be running... show the last lines from boot.log
-echo "running: " `tail -1 stdout.log`
-exit 0
+if [ -f pid ]; then
+    #echo "assume to be running locally"
+    tail -1 stdout.log
+    exit 0
+fi
+
+echo "can't determine the status!"
+exit 3

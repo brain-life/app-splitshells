@@ -3,12 +3,12 @@
 #PBS -N app-splitshells
 #PBS -V
 
-cd $PBS_O_WORKDIR
+[ $PBS_O_WORKDIR ] && cd $PBS_O_WORKDIR
 
 module load matlab
 
-
-export MATLABPATH=$MATLABPATH:$SCA_SERVICE_DIR
+echo "Running main.m"
+export MATLABPATH=$MATLABPATH:$SERVICE_DIR
 matlab -nodisplay -nosplash -r main
 
 #check for output files

@@ -1,14 +1,20 @@
-# Running via Docker
+
+[![Abcdspec-compliant](https://img.shields.io/badge/ABCD_Spec-v1.0-green.svg)](https://github.com/soichih/abcd-spec)
+
+# app-splitshells
+still need to edit: clean.sh, package.json
+
+## Running via Docker
 
 You can run this app anywhere that has docker engine installed.
 
-## Build docker container
+### Build docker container
 
 If you are not going to use the one that we've published on docker hub, you can build the container locally by git cloning this repo, and then run following command
 
-`docker build -t app-splitshells .`
+`docker<<<<<<< master build -t app-splitshells .`
 
-## Create config.json
+### Create config.json
 
 This container receives input parameter via config.json. Create something like following in your current working directory.
 
@@ -27,7 +33,7 @@ This container receives input parameter via config.json. Create something like f
 mkdir testdata
 # copy your dwi.bvals, dwi.bvecs, and dwi.nii.gz in to testdata
 ```
-## Running container
+### Running container
 
 Now, run docker run to run the app
 

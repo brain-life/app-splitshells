@@ -21,7 +21,6 @@ end
 % load config.json
 config = loadjson('config.json');
 
-
 % Parameters used for normalization
 params.shells       = config.shell;
 bvals = dlmread(config.bvals);
@@ -43,10 +42,5 @@ for i = 1:length(params.shells)
     dwi_oneshell.dim(4) = size(dwi_oneshell.data,4);
     niftiWrite(dwi_oneshell);
 end
-
-
-
-
-
 
 

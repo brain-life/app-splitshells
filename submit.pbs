@@ -5,7 +5,9 @@
 
 [ $PBS_O_WORKDIR ] && cd $PBS_O_WORKDIR
 
-module load matlab
+if [ $ENV == "IUHPC" ]; then
+    module load matlab
+fi
 
 echo "Running main.m"
 export MATLABPATH=$MATLABPATH:$SERVICE_DIR

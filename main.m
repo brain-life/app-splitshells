@@ -34,7 +34,8 @@ for i = 1:length(params.shells)
     assertEqual(sum(all_index), sum(index0) + sum(index));
     
     %write files
-    dlmwrite(sprintf('dwi.bvals', params.shells(i)), bvals(all_index));
+    %dlmwrite('dwi.bvals',bvals.valnorm,'delimiter',' ');
+    dlmwrite(sprintf('dwi.bvals', params.shells(i)), bvals(all_index), 'delimiter',' ');
     dlmwrite(sprintf('dwi.bvecs', params.shells(i)), bvecs(:,all_index));
     dwi_oneshell = dwi;
     dwi_oneshell.fname = sprintf('dwi.nii.gz', params.shells(i));

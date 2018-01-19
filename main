@@ -11,8 +11,9 @@ if [ $ENV == "IUHPC" ]; then
 fi
 
 echo "Running main.m"
-export MATLABPATH=$MATLABPATH:$SERVICE_DIR
-matlab -nodisplay -nosplash -r main
+#export MATLABPATH=$MATLABPATH:$SERVICE_DIR
+#matlab -nodisplay -nosplash -r main
+singularity exec -e docker://brainlife/splitshells
 
 #check for output files
 if [ -s dwi.nii.gz ];

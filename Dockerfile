@@ -1,8 +1,9 @@
-FROM brainlife/mcr:centos6-r2016a
+FROM brainlife/mcr:neurodebian1604-r2017a
 
 MAINTAINER Lindsey Kitchell <kitchell@indiana.edu>
 
 #RUN yum update 
+RUN apt-get update
 
 ADD /msa /msa
 

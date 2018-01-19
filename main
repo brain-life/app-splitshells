@@ -14,7 +14,8 @@ module load singularity 2> /dev/null
 echo "Running main.m"
 #export MATLABPATH=$MATLABPATH:$SERVICE_DIR
 #matlab -nodisplay -nosplash -r main
-singularity exec -e docker://brainlife/splitshells
+#singularity exec -e docker://brainlife/splitshells
+singularity exec -e docker://brainlife/mcr:neurodebian1604-r2017a ./compiledmatlab/main
 
 #check for output files
 if [ -s dwi.nii.gz ];

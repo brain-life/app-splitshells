@@ -5,10 +5,11 @@
 
 rm -f finished
 
-if [ $ENV == "IUHPC" ]; then
-    module load matlab
-    module load singularity
-fi
+which module && module load singularity
+#if [ $ENV == "IUHPC" ]; then
+#    module load matlab
+#    module load singularity
+#fi
 
 echo "Running main.m"
 #export MATLABPATH=$MATLABPATH:$SERVICE_DIR

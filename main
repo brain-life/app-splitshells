@@ -5,7 +5,7 @@
 
 rm -f finished
 
-which module && module load singularity
+module load singularity 2> /dev/null
 #if [ $ENV == "IUHPC" ]; then
 #    module load matlab
 #    module load singularity

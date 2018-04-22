@@ -3,7 +3,7 @@
 #PBS -N app-splitshells
 #PBS -V
 
-echo "Running ./msa/main"
+echo "Running main"
 singularity exec -e docker://brainlife/mcr:neurodebian1604-r2017a ./msa/main
 
 #check for output files

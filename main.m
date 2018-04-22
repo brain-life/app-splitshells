@@ -1,26 +1,19 @@
 function [] = main()
 % normalizes the bvals and splits the bvecs
 
-
-if isempty(getenv('SERVICE_DIR'))
-    disp('setting SERVICE_DIR to pwd')
-    setenv('SERVICE_DIR', pwd)
-end
-
-switch getenv('ENV')
-    case 'IUHPC'
-        disp('loading paths (HCP)')
-        addpath(genpath('/N/u/hayashis/BigRed2/git/jsonlab'));
-        addpath(genpath('/N/u/hayashis/BigRed2/git/vistasoft'));
-    case 'VM'
-        disp('loading paths (VM)')
-        addpath(genpath('/usr/local/jsonlab'))
-        addpath(genpath('/usr/local/vistasoft'))
-end
+% switch getenv('ENV')
+%     case 'IUHPC'
+%         disp('loading paths (HCP)')
+%         addpath(genpath('/N/u/hayashis/BigRed2/git/jsonlab'));
+%         addpath(genpath('/N/u/hayashis/BigRed2/git/vistasoft'));
+%     case 'VM'
+%         disp('loading paths (VM)')
+%         addpath(genpath('/usr/local/jsonlab'))
+%         addpath(genpath('/usr/local/vistasoft'))
+% end
 
 % load config.json
 config = loadjson('config.json');
-
 
 % Parameters used for normalization
 params.shells       = config.shell;
@@ -43,10 +36,5 @@ for i = 1:length(params.shells)
     dwi_oneshell.dim(4) = size(dwi_oneshell.data,4);
     niftiWrite(dwi_oneshell);
 end
-
-
-
-
-
 
 

@@ -10,4 +10,6 @@ docker run -it --rm \
     -v `pwd`:/output \
     brainlife/splitshells
 
-#-v /Users/lindseykitchell/Documents/Github_repos/app-splitshells/input:/input \
+#docker run -it \
+#    -v `pwd`:/output \
+#    brainlife/splitshells

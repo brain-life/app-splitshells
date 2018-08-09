@@ -1,5 +1,7 @@
 {
-        "shell": 2000,
+        "shell": 2500,
+        "b0_max": 200,
+        "bvals_round": 100,
         "bvals": "testdata/dwi.bvals",
         "bvecs": "testdata/dwi.bvecs",
         "dwi": "testdata/dwi.nii.gz"

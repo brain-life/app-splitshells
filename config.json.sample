@@ -1,7 +1,7 @@
 {
         "shell": 2000,
-        "bvals": "/input/dwi.bvals",
-        "bvecs": "/input/dwi.bvecs",
-        "dwi": "/input/dwi.nii.gz"
+        "bvals": "testdata/dwi.bvals",
+        "bvecs": "testdata/dwi.bvecs",
+        "dwi": "testdata/dwi.nii.gz"
 }
 

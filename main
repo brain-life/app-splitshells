@@ -3,14 +3,9 @@
 #PBS -N app-splitshells
 #PBS -V
 
-echo "Running main"
-singularity exec -e docker://brainlife/mcr:neurodebian1604-r2017a ./msa/main
-
-#check for output files
-if [ -s dwi.nii.gz ];
+singularity exec -e docker://brainlife/mcr:neurodebian1604-r2017a ./compiled/main
+if [ ! -s dwi.nii.gz ];
 then
-    echo "finished"
-else
 	echo "output missing"
 	exit 1
 fi

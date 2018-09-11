@@ -4,7 +4,6 @@
 # app-splitshells
 still need to edit: clean.sh, package.json
 
-<<<<<<< HEAD
 # Running via Docker
 
 You can run this app anywhere that has docker engine installed.
@@ -28,7 +27,6 @@ If you are not going to use the one that we've published on docker hub, you can 
 `docker<<<<<<< master build -t app-splitshells .`
 
 ### Create config.json
->>>>>>> 6c61a889f984d29df7da0b3e68e28be2d9eebfe6
 
 This container receives input parameter via config.json. Create something like following in your current working directory.
 

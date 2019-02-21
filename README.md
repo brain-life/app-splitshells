@@ -1,63 +1,70 @@
-
-[![Abcdspec-compliant](https://img.shields.io/badge/ABCD_Spec-v1.0-green.svg)](https://github.com/soichih/abcd-spec)
+[![Abcdspec-compliant](https://img.shields.io/badge/ABCD_Spec-v1.1-green.svg)](https://github.com/brain-life/abcd-spec)
+[![Run on Brainlife.io](https://img.shields.io/badge/Brainlife-bl.app.1-blue.svg)](https://doi.org/10.25663/bl.app.17)
 
 # app-splitshells
-still need to edit: clean.sh, package.json
 
-<<<<<<< HEAD
-# Running via Docker
+dwi images contsists of several diffusion weight images (volumes) with different gradient directions (bvecs) and strenghth (bvals). Some processing can only run on specific bvals (aka "single shell"). This service will look for volumes with specific bvals and pull those images to create a "single shell" image. bvecs are often similar but not exactly the same. This App also allows you to specify range of bvals to be rounded to the nearest 100s (like 1980 to 2000, for example).
 
-You can run this app anywhere that has docker engine installed.
+### Authors
+- Lindsey Kitchell (kitchell@indiana.edu)
+- Soichi Hayashi (hayashis@iu.edu)
 
-## Build docker container
+### Project directors
+- Franco Pestilli (franpest@indiana.edu)
 
-If you are not going to use the one that we've published on docker hub, you can build the container locally by git cloning this repo, and then run following command
+### Funding 
+[![NSF-BCS-1734853](https://img.shields.io/badge/NSF_BCS-1734853-blue.svg)](https://nsf.gov/awardsearch/showAward?AWD_ID=1734853)
+[![NSF-BCS-1636893](https://img.shields.io/badge/NSF_BCS-1636893-blue.svg)](https://nsf.gov/awardsearch/showAward?AWD_ID=1636893)
 
-`docker build -t app-splitshell .`
+## Running the App 
 
-## Create config.json
-=======
-## Running via Docker
+### On Brainlife.io
 
-You can run this app anywhere that has docker engine installed.
+You can submit this App online at [https://doi.org/10.25663/bl.app.17](https://doi.org/10.25663/bl.app.17) via the "Execute" tab.
 
-### Build docker container
+### Running Locally (on your machine)
 
-If you are not going to use the one that we've published on docker hub, you can build the container locally by git cloning this repo, and then run following command
+1. git clone this repo.
+2. Inside the cloned directory, create `config.json` with something like the following content with paths to your input files.
 
-`docker<<<<<<< master build -t app-splitshells .`
-
-### Create config.json
->>>>>>> 6c61a889f984d29df7da0b3e68e28be2d9eebfe6
-
-This container receives input parameter via config.json. Create something like following in your current working directory.
-
-```
+```json
 {
-        "shell": 2000,
-        "bvals": "/input/dwi.bvals",
-        "bvecs": "/input/dwi.bvecs",
-        "dwi": "/input/dwi.nii.gz"
+        "shell": 2500,
+        "b0_max": 200,
+        "bvals_round": 100,
+        "bvals": "input/dwi/dwi.bvals",
+        "bvecs": "input/dwi/dwi.bvecs",
+        "dwi": "input/dwi/dwi.nii.gz"
 }
 ```
 
-/input is a path inside the container which we will map from our host directory. In this example, I will create a directory called testdata in my working directory.
+3. Launch the App by executing `main`
 
-```
-mkdir testdata
-# copy your dwi.bvals, dwi.bvecs, and dwi.nii.gz in to testdata
-```
-## Running container
-
-Now, run docker run to run the app
-
-```
-docker run -it --rm \
-    -v `pwd`/testdata:/input \
-    -v `pwd`:/output \
-    brainlife/splitshells
-
+```bash
+./main
 ```
 
-We will volume mount (-v) current working directory's testdata directory as container's /input directory, and also the current working directory as container's /output directory. /output directory is used as the working directory inside the container (which is mounted from the host's current working directory). So, by placing the config.json on the host's current working directory, container will find config.json under its /output directory. 
+### Sample Datasets
 
+If you don't have your own input file, you can download sample datasets from Brainlife.io, or you can use [Brainlife CLI](https://github.com/brain-life/cli).
+
+```
+npm install -g brainlife
+bl login
+mkdir input
+bl dataset download 5a050a00eec2b300611abff3 && mv 5a050a00eec2b300611abff3 input/dwi
+```
+
+## Output
+
+This App will generate `dwi.nii.gz`, `dwi.bvecs`,  anb `dwi.bvals` on the current working directory. 
+
+### Dependencies
+
+This App only requires [singularity](https://www.sylabs.io/singularity/) to run. If you don't have singularity, you will need to install following dependencies.  
+
+  - Matlab: https://www.mathworks.com/products/matlab.html
+  - VISTASOFT: https://github.com/vistalab/vistasoft/
+  - jsonlab: https://www.mathworks.com/matlabcentral/fileexchange/33381-jsonlab-a-toolbox-to-encode-decode-json-files?w.mathworks.com
+  
+  
